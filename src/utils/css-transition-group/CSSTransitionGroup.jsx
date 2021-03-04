@@ -10,7 +10,7 @@
  *	File originally extracted from the React source, converted to ES6 by https://github.com/developit
  */
 
-import { h, cloneElement, Component } from 'preact';
+import { h, cloneElement, Component, toChildArray } from 'preact';
 import { getKey, filterNullChildren } from './util.js';
 import {
   mergeChildMappings,
@@ -32,7 +32,7 @@ export class CSSTransitionGroup extends Component {
     super();
     this.refs = {};
     this.state = {
-      children: (props.children || []).slice()
+      children: (toChildArray(props.children) || []).slice()
     };
   }
 
@@ -47,11 +47,11 @@ export class CSSTransitionGroup extends Component {
   }
 
   componentWillReceiveProps({ children, exclusive, showProp }) {
-    let nextChildMapping = filterNullChildren(children || []).slice();
+    let nextChildMapping = filterNullChildren(toChildArray(children) || []).slice();
 
     // last props children if exclusive
     let prevChildMapping = filterNullChildren(
-      exclusive ? this.props.children : this.state.children
+      exclusive ? toChildArray(this.props.children) : this.state.children
     );
 
     let newChildren = mergeChildMappings(prevChildMapping, nextChildMapping);
@@ -110,7 +110,7 @@ export class CSSTransitionGroup extends Component {
   performEnter(key) {
     this.currentlyTransitioningKeys[key] = true;
     let component = this.refs[key];
-    if (component.componentWillEnter) {
+    if (component && component.componentWillEnter) {
       component.componentWillEnter(() => this._handleDoneEntering(key));
     } else {
       this._handleDoneEntering(key);
@@ -119,7 +119,7 @@ export class CSSTransitionGroup extends Component {
 
   _handleDoneEntering(key) {
     delete this.currentlyTransitioningKeys[key];
-    let currentChildMapping = filterNullChildren(this.props.children),
+    let currentChildMapping = filterNullChildren(toChildArray(this.props.children)),
       showProp = this.props.showProp;
     if (
       !currentChildMapping ||
@@ -156,7 +156,7 @@ export class CSSTransitionGroup extends Component {
   _handleDoneLeaving(key) {
     delete this.currentlyTransitioningKeys[key];
     let showProp = this.props.showProp,
-      currentChildMapping = filterNullChildren(this.props.children);
+      currentChildMapping = filterNullChildren(toChildArray(this.props.children));
     if (
       showProp &&
       currentChildMapping &&

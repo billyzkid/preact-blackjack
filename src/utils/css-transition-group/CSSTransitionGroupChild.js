@@ -10,7 +10,7 @@
  *	File originally extracted from the React source, converted to ES6 by https://github.com/developit
  */
 
-import { h, Component } from 'preact';
+import { h, Component, toChildArray } from 'preact';
 import { getComponentBase, onlyChild } from './util.js';
 import { addClass, removeClass } from './CSSCore.js';
 import { addEndEventListener, removeEndEventListener } from './TransitionEvents.js';
@@ -116,6 +116,6 @@ export class CSSTransitionGroupChild extends Component {
   }
 
   render() {
-    return onlyChild(this.props.children);
+    return onlyChild(toChildArray(this.props.children));
   }
 }
