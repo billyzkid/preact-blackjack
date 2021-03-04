@@ -9,7 +9,7 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "preact": "^10.5.12",
-    "preact-css-transition-group": "github:applinskinner/preact-css-transition-group"
+    "preact-css-transition-group": "github:billyzkid/preact-css-transition-group"
   },
   "devDependencies": {
     "@prefresh/snowpack": "^3.1.0",
