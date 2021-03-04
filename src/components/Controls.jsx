@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import CSSTransitionGroup from '../utils/css-transition-group/index.js';
+import CSSTransitionGroup from 'preact-css-transition-group';
 
 const Controls = ({ inProgress, gameOver, deal, hit, stand }) => {
   return (

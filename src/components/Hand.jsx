@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import Card from './Card.jsx';
-import CSSTransitionGroup from '../utils/css-transition-group/index.js';
+import CSSTransitionGroup from 'preact-css-transition-group';
 
 class Hand extends Component {
   constructor(props) {

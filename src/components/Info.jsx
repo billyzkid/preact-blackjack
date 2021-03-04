@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import CSSTransitionGroup from '../utils/css-transition-group/index.js';
+import CSSTransitionGroup from 'preact-css-transition-group';
 
 const Info = ({ isWin, winPercentage }) => {
   const getOutcome = (win) => {
