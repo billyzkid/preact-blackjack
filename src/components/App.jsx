@@ -40,7 +40,6 @@ class App extends Component {
     // set state to update the view
     this.setState(
       (prevState, props) => {
-        console.log(prevState);
         return {
           playerHand: playerHand.cards,
           dealerHand: [dealerHand.cards[0], { rank: 'dummy', suit: '' }],
@@ -85,8 +84,6 @@ class App extends Component {
     const isWin = getWinner(playerHand.scoreTotal, dealerScore);
     const winCount = isWin === true ? ++this.state.winCount : this.state.winCount;
     const winPercentage = calculateWinPercentage(winCount, this.state.roundCount);
-
-    console.log(winPercentage);
 
     // update the view
     this.setState(
