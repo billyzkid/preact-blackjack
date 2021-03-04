@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "snowpack dev --reload",
+    "start": "snowpack dev",
     "build": "snowpack build",
     "test": "web-test-runner \"src/**/*.test.{js,jsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
